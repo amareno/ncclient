@@ -12,6 +12,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
+# This is a fork of netclient/netclient github project
+# This file has been modified from the original 
 
 
 import logging
@@ -240,7 +243,7 @@ class Session(Thread):
                     if self._base == NetconfBase.BASE_11:
                         data = b"%s%s%s" % (start_delim(len(data)), data, END_DELIM)
                     else:
-                        data = b"%s%s" % (data, MSG_DELIM)
+                        data = b"%s%s\n" % (data, MSG_DELIM)
                     self.logger.info("Sending:\n%s", data)
                     while data:
                         n = self._transport_write(data)
